@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: Arial, sans-serif;
     background: ${(props) => props.theme.background};
+    background-size: cover;
     color: ${(props) => props.theme.text};
     transition: background 0.3s, color 0.3s;
   }
