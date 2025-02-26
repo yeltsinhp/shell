@@ -2,8 +2,8 @@ import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "./store";
 import { lightTheme, darkTheme } from "./theme";
-import { GlobalStyles } from "./components/GlobalStyles";
-import Login from "./views/Login";
+import { GlobalStyles } from "./components/styles/GlobalStyles";
+import AppRouter from "./router/AppRouter";
 
 const App = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);
@@ -11,7 +11,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <Login onLogin={(username) => console.log(username)} />
+      <AppRouter />
     </ThemeProvider>
   );
 };

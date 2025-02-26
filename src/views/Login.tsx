@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../store/slices/user";
 import { setTheme } from "../store/slices/theme";
 import { RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 import {
   LoginContainer,
   Card,
@@ -12,17 +14,25 @@ import {
   ToggleSwitch,
   SwitchInput,
   SwitchSlider,
-} from "../components/StyledLogin";
+} from "../components/styles/StyledLogin";
 
-const Login = ({ onLogin }: { onLogin: (username: string) => void }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector((state: RootState) => state.theme.theme);
+
+  const handleLogin = () => {
+    if (username.trim() !== "") {
+      dispatch(setUser(username)); // Guarda el usuario en Redux y LocalStorage
+      navigate("/home"); // Redirige a Home
+    }
+  };
 
   return (
     <LoginContainer>
       <Card>
-        {/* Toggle dentro del Card, alineado a la derecha */}
+        {/* Toggle para cambiar entre Light/Dark Mode */}
         <ToggleContainer>
           <ToggleSwitch>
             <SwitchInput
@@ -41,7 +51,7 @@ const Login = ({ onLogin }: { onLogin: (username: string) => void }) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <Button onClick={() => onLogin(username)}>Ingresar</Button>
+        <Button onClick={handleLogin}>Ingresar</Button>
       </Card>
     </LoginContainer>
   );
