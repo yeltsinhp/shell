@@ -1,20 +1,24 @@
 import { useState } from "react";
-import { SearchCard, SearchInput, SearchButton } from "./styles/SearchBarStyles";
+import { SearchContainer, SearchInput } from "./styles/SearchBarStyles";
 
-const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
-  const [search, setSearch] = useState("");
+const Search = ({ onSearch }: { onSearch: (query: string) => void }) => {
+  const [query, setQuery] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+    onSearch(e.target.value);
+  };
 
   return (
-    <SearchCard>
+    <SearchContainer>
       <SearchInput
         type="text"
         placeholder="Buscar Pokémon..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={query}
+        onChange={handleChange}
       />
-      <SearchButton onClick={() => onSearch(search)}>Buscar</SearchButton>
-    </SearchCard>
+    </SearchContainer>
   );
 };
 
-export default SearchBar;
+export default Search;

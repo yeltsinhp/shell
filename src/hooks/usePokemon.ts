@@ -4,15 +4,16 @@ import { getPokemonList, getPokemonByType, getPokemonImage } from "../services/p
 interface Pokemon {
   name: string;
   url: string;
-  image: string | null; // Nueva propiedad para la imagen
+  image: string | null;
 }
 
 const usePokemon = (selectedType: string | null, searchQuery: string) => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
 
-  const fetchPokemon = async () => {
+  const fetchPokemon = async (reset = false) => {
     setLoading(true);
     try {
       let results: Pokemon[] = [];
@@ -31,24 +32,43 @@ const usePokemon = (selectedType: string | null, searchQuery: string) => {
         })
       );
 
-      setPokemonList((prev) => (page === 0 ? pokemonWithImages : [...prev, ...pokemonWithImages]));
+      setPokemonList((prev) => {
+        // Evitar duplicados
+        const uniquePokemons = new Map(prev.map((p) => [p.name, p]));
+        pokemonWithImages.forEach((p) => uniquePokemons.set(p.name, p));
+        return reset ? pokemonWithImages : Array.from(uniquePokemons.values());
+      });
+
     } catch (error) {
       console.error("Error fetching Pokémon:", error);
     }
     setLoading(false);
   };
 
+  // 🚀 **Nuevo efecto para filtrar Pokémon cuando se escribe en el buscador**
   useEffect(() => {
-    setPokemonList([]); // Reiniciar lista al cambiar de tipo o búsqueda
+    if (searchQuery) {
+      const filtered = pokemonList.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredPokemon(filtered);
+    } else {
+      setFilteredPokemon(pokemonList);
+    }
+  }, [searchQuery, pokemonList]);
+
+  useEffect(() => {
+    // Reiniciar lista cuando cambia el tipo o la búsqueda
+    setPokemonList([]);
     setPage(0);
-    fetchPokemon();
-  }, [selectedType, searchQuery]);
+    fetchPokemon(true);
+  }, [selectedType]);
 
   useEffect(() => {
     if (page > 0) fetchPokemon();
   }, [page]);
 
-  return { pokemonList, loading, setPage };
+  return { pokemonList: filteredPokemon, loading, setPage };
 };
 
 export default usePokemon;
