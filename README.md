@@ -8,16 +8,16 @@ Este proyecto usa **React + TypeScript + Vite** y está basado en una arquitectu
 
 ## 🚀 Instalación y Ejecución
 
-# Instalar dependencias en pokemonMicrofront
-cd pokemonMicrofront
+# Instalar dependencias en microfront-pokemon
+cd microfront-pokemon
 npm install
 
-# Instalar dependencias en pokemonHistory
-cd ../pokemonHistory
+# Instalar dependencias en microfront-history
+cd microfront-history
 npm install
 
 # Instalar dependencias en shell
-cd ../shell
+cd shell
 npm install
 
 # Iniciar pokemonMicrofront
