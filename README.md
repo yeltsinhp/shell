@@ -34,5 +34,11 @@ npm run dev
 
 ### 1️⃣ Clonar el repositorio
 ```sh
-git clone https://github.com/tu-usuario/pokemon-microfrontends.git
-cd pokemon-microfrontends
+git clone https://github.com/yeltsinhp/microfront-pokemon.git
+cd microfront-pokemon
+
+git clone https://github.com/yeltsinhp/microfront-history.git
+cd microfront-history
+
+git clone https://github.com/yeltsinhp/shell.git
+cd shell
