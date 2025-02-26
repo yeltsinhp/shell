@@ -21,15 +21,15 @@ cd ../shell
 npm install
 
 # Iniciar pokemonMicrofront
-cd pokemonMicrofront
+cd microfront-pokemon
 npm run start
 
 # Iniciar pokemonHistory
-cd ../pokemonHistory
+cd microfront-history
 npm run start
 
 # Iniciar shell
-cd ../shell
+cd shell
 npm run dev
 
 ### 1️⃣ Clonar el repositorio
