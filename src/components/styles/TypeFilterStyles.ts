@@ -31,9 +31,9 @@ export const TypeContainer = styled.div`
   width: 90%;
 `;
 
-export const TypeButton = styled.button<{ typeName: string; isSelected?: boolean }>`
+export const TypeButton = styled.button<{ $typeName: string; $isSelected?: boolean }>` 
   padding: 10px 15px;
-  background: ${(props) => typeColors[props.typeName]}; /* Todos los botones tienen el mismo color base */
+  background: ${(props) => typeColors[props.$typeName]};
   color: white;
   border: none;
   border-radius: 5px;
@@ -42,14 +42,14 @@ export const TypeButton = styled.button<{ typeName: string; isSelected?: boolean
   font-weight: bold;
 
   &:hover {
-    background: ${(props) => typeColors[props.typeName] + "99"}; /* Hace el color más claro en hover */
+    background: ${(props) => typeColors[props.$typeName] + "99"};
     transform: scale(1.05);
   }
 
   ${(props) =>
-    props.isSelected &&
+    props.$isSelected &&
     `
-    background: ${typeColors[props.typeName] + "CC"}; /* Hace el color más claro cuando está seleccionado */
+    background: ${typeColors[props.$typeName] + "CC"}; 
   `}
 `;
 

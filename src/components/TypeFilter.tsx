@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TypeContainer, TypeButton, ResetButton } from "./styles/TypeFilterStyles";
-import { FaTimes } from "react-icons/fa"; // Importamos el icono de "X" para Reset
+import { FaTimes } from "react-icons/fa";
 
 const types = [
   "fire", "water", "electric", "grass", "ice", "fighting",
@@ -25,15 +25,15 @@ const TypeFilter: React.FC<TypeFilterProps> = ({ onSelectType }) => {
       {types.map((type) => (
         <TypeButton
           key={type}
-          typeName={type}
-          isSelected={selectedType === type}
+          $typeName={type} // ✅ Pasamos como `$prop` para evitar el error
+          $isSelected={selectedType === type} // ✅ Usamos `$isSelected`
           onClick={() => handleSelectType(type)}
         >
           {type.toUpperCase()}
         </TypeButton>
       ))}
       <ResetButton onClick={() => handleSelectType(null)}>
-        <FaTimes size={20} /> {/* Icono de "X" con tamaño 20px */}
+        <FaTimes size={20} />
       </ResetButton>
     </TypeContainer>
   );
