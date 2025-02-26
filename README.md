@@ -28,6 +28,7 @@ npm run start
 cd ../pokemonHistory
 npm run start
 
+# Iniciar shell
 cd ../shell
 npm run dev
 
