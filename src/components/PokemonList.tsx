@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
 import { PokemonContainer, PokemonCard, PokemonImage } from "./styles/PokemonListStyles";
 
 const PokemonList = ({ selectedType, searchQuery }: { selectedType: string | null; searchQuery: string }) => {
   const { pokemonList, loading, setPage } = usePokemon(selectedType, searchQuery);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +26,7 @@ const PokemonList = ({ selectedType, searchQuery }: { selectedType: string | nul
   return (
     <PokemonContainer>
       {pokemonList.map((pokemon) => (
-        <PokemonCard key={pokemon.name}>
+        <PokemonCard key={pokemon.name} onClick={() => navigate(`/pokemon/${pokemon.name}`)}>
           {pokemon.image ? (
             <PokemonImage src={pokemon.image} alt={pokemon.name} />
           ) : (

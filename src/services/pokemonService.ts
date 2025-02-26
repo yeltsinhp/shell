@@ -23,9 +23,12 @@ export const getPokemonByType = async (type: string) => {
 export const getPokemonImage = async (pokemonName: string) => {
   try {
     const response = await api.get(`pokemon/${pokemonName}`);
-    return response.data.sprites.other.dream_world.front_default;
+    
+    // 📌 Usamos official-artwork, que siempre tiene imagen
+    return response.data.sprites.other["official-artwork"].front_default;
   } catch (error) {
     console.error(`Error fetching image for ${pokemonName}:`, error);
     return null;
   }
 };
+

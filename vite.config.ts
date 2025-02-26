@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { federation } from "@module-federation/vite";
+import federation from "@originjs/vite-plugin-federation";
 
 export default defineConfig({
   plugins: [
@@ -8,10 +8,9 @@ export default defineConfig({
     federation({
       name: "shell",
       remotes: {
-        // microfront1: "http://localhost:3001/assets/remoteEntry.js",
-        // microfront2: "http://localhost:3002/assets/remoteEntry.js",
+        pokemonMicrofront: "http://localhost:3001/assets/remoteEntry.js", // ✅ Verificar la URL
       },
-      shared: ["react", "react-dom", "styled-components", "@reduxjs/toolkit"],
+      shared: ["react", "react-dom"],
     }),
   ],
   server: { port: 3000 },
