@@ -24,7 +24,6 @@ const usePokemon = (selectedType: string | null, searchQuery: string) => {
         results = await getPokemonList(page * 30, 30);
       }
 
-      // Obtener imágenes SVG para cada Pokémon
       const pokemonWithImages = await Promise.all(
         results.map(async (pokemon) => {
           const image = await getPokemonImage(pokemon.name);
@@ -33,7 +32,6 @@ const usePokemon = (selectedType: string | null, searchQuery: string) => {
       );
 
       setPokemonList((prev) => {
-        // Evitar duplicados
         const uniquePokemons = new Map(prev.map((p) => [p.name, p]));
         pokemonWithImages.forEach((p) => uniquePokemons.set(p.name, p));
         return reset ? pokemonWithImages : Array.from(uniquePokemons.values());
@@ -45,7 +43,6 @@ const usePokemon = (selectedType: string | null, searchQuery: string) => {
     setLoading(false);
   };
 
-  // 🚀 **Nuevo efecto para filtrar Pokémon cuando se escribe en el buscador**
   useEffect(() => {
     if (searchQuery) {
       const filtered = pokemonList.filter((pokemon) =>
@@ -58,7 +55,6 @@ const usePokemon = (selectedType: string | null, searchQuery: string) => {
   }, [searchQuery, pokemonList]);
 
   useEffect(() => {
-    // Reiniciar lista cuando cambia el tipo o la búsqueda
     setPokemonList([]);
     setPage(0);
     fetchPokemon(true);

@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); // 🔹 Aumentamos opacidad para mayor visibilidad
+  background: rgba(0, 0, 0, 0.7); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,14 +18,13 @@ export const ModalContent = styled.div`
   padding: 25px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); // 🔹 Más sombra para resaltar
-  border: 3px solid ${({ theme }) => theme.borderColor}; // 🔹 Agregamos un borde
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); 
+  border: 3px solid ${({ theme }) => theme.borderColor}; 
   max-width: 400px;
   width: 90%;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; // 🔹 Animación suave
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; 
   opacity: 1;
 
-  // 🔹 Efecto al abrir
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -43,7 +42,7 @@ export const PokemonImage = styled.img`
   width: 150px;
   height: auto;
   margin-bottom: 10px;
-  border-radius: 10px; // 🔹 Redondeamos un poco los bordes
+  border-radius: 10px; 
 `;
 
 export const PokemonName = styled.p`

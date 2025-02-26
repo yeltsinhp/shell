@@ -78,3 +78,18 @@ export const SwitchSlider = styled.span`
     }
   }
 `;
+
+export const HistoryButton = styled.button`
+  background-color: ${(props) => props.theme.button};
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;

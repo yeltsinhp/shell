@@ -14,7 +14,6 @@ const PokemonList = ({ selectedType, searchQuery }: { selectedType: string | nul
       const clientHeight = window.innerHeight;
 
       if (scrollTop + clientHeight >= scrollHeight - 50 && !loading) {
-        console.log("Cargando más Pokémon...");
         setPage((prev) => prev + 1);
       }
     };

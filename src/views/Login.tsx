@@ -24,15 +24,14 @@ const Login = () => {
 
   const handleLogin = () => {
     if (username.trim() !== "") {
-      dispatch(setUser(username)); // Guarda el usuario en Redux y LocalStorage
-      navigate("/home"); // Redirige a Home
+      dispatch(setUser(username)); 
+      navigate("/home"); 
     }
   };
 
   return (
     <LoginContainer>
       <Card>
-        {/* Toggle para cambiar entre Light/Dark Mode */}
         <ToggleContainer>
           <ToggleSwitch>
             <SwitchInput

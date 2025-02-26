@@ -25,8 +25,8 @@ const TypeFilter: React.FC<TypeFilterProps> = ({ onSelectType }) => {
       {types.map((type) => (
         <TypeButton
           key={type}
-          $typeName={type} // ✅ Pasamos como `$prop` para evitar el error
-          $isSelected={selectedType === type} // ✅ Usamos `$isSelected`
+          $typeName={type} 
+          $isSelected={selectedType === type}
           onClick={() => handleSelectType(type)}
         >
           {type.toUpperCase()}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useTheme } from "styled-components"; // 🔹 Obtener tema
+import { useTheme } from "styled-components";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import { Container } from "../components/styles/HomeStyles";
@@ -11,11 +11,11 @@ import {
   ModalContent,
   CloseButton,
   PokemonImage,
-  PokemonName, // 🔹 Nuevo componente de estilo
+  PokemonName, 
 } from "../components/styles/LastVisitedStyles";
 
 const Home = () => {
-  const theme = useTheme(); // 🔹 Obtener el tema actual
+  const theme = useTheme(); 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [lastVisited, setLastVisited] = useState<{ name: string; image: string } | null>(null);
@@ -25,7 +25,7 @@ const Home = () => {
     const history = JSON.parse(localStorage.getItem("pokemonHistory") || "[]");
 
     if (history.length > 0) {
-      const lastPokemon = history[0]; // Ahora tomamos el PRIMERO como el último visitado
+      const lastPokemon = history[0]; 
 
       getPokemonImage(lastPokemon).then((image) => {
         if (image) {

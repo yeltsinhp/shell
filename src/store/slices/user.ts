@@ -4,7 +4,6 @@ interface UserState {
   username: string | null;
 }
 
-// Carga el usuario desde localStorage si existe
 const initialState: UserState = {
   username: localStorage.getItem("username"),
 };
@@ -15,11 +14,11 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
-      localStorage.setItem("username", action.payload); // Guarda en localStorage
+      localStorage.setItem("username", action.payload); 
     },
     logoutUser: (state) => {
       state.username = null;
-      localStorage.removeItem("username"); // Elimina del localStorage
+      localStorage.removeItem("username"); 
     },
   },
 });

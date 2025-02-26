@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Mapeo de colores según el tipo de Pokémon
 const typeColors: Record<string, string> = {
   fire: "#EE8130",
   water: "#6390F0",
@@ -53,7 +52,6 @@ export const TypeButton = styled.button<{ $typeName: string; $isSelected?: boole
   `}
 `;
 
-// Botón Reset como icono
 export const ResetButton = styled.button`
   padding: 10px;
   background: red;
